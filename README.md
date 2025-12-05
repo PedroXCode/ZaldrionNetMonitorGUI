@@ -1,54 +1,115 @@
-<h1 align="center">
-  ⚡ ZALDRION NET MONITOR (GUI) ⚡  
-</h1>
+# ⚡ Zaldrion Net Monitor (GUI)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white"/>
-  <img src="https://img.shields.io/badge/WPF-Desktop_App-0A0A0A?style=for-the-badge&logo=windows&logoColor=white"/>
-  <img src="https://img.shields.io/badge/C%23-Developer-9B59B6?style=for-the-badge&logo=csharp&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
-</p>
+Herramienta ligera para monitorear conexiones de red **en tiempo real** usando `netstat -ano`, desarrollada en **C# + WPF (.NET 8)**.
 
 ---
 
-## 🎯 **¿Qué es Zaldrion Net Monitor?**
+## 🖥️ Compatibilidad
 
-ZaldrionNetMonitorGUI es una aplicación moderna escrita en **C# + WPF (.NET 8)** que permite visualizar, filtrar y exportar conexiones de red activas en tu sistema **en tiempo real**, con una interfaz oscura, elegante y completamente personalizada.
-
-Está diseñado para:
-
-- Usuarios avanzados  
-- Estudiantes y practicantes de Ciberseguridad  
-- Análisis rápido de procesos y conexiones  
-- Investigar actividad sospechosa en tiempo real  
+| Plataforma | Soporte |
+|-----------|---------|
+| **Windows 10 / 11** | ✔️ |
+| **.NET 8 Runtime** | ✔️ Necesario |
+| Linux / macOS | ❌ No compatible |
 
 ---
 
-##  **Características Principales**
+## 📦 Instalación
 
-### 🔍 **Monitoreo en tiempo real**
-- Lee información desde `netstat -ano`
-- Mapea PIDs a nombres de procesos
-- Actualiza automáticamente cada 3 segundos
+### ✅ Opción 1: Ejecutar EXE (recomendado)
+> *Disponible cuando se publique el release.*
 
-### **Filtros avanzados**
-- Filtrar por **nombre de proceso**
-- Filtrar por **protocolo (TCP / UDP / All)**
+1. Descargar `ZaldrionNetMonitorGUI.zip`
+2. Extraer la carpeta
+3. Ejecutar:
+   ```
+   ZaldrionNetMonitorGUI.exe
+   ```
 
-###  **Exportación JSON**
-- Guarda el estado actual en un archivo `.json`
-- Perfecto para análisis forense, logs o auditorías
-
-
-### 🛠️ **Tecnologías utilizadas**
-- .NET 8.0
-- WPF (Windows Presentation Foundation)
-- C#
-- XAML UI Styling
-- DispatcherTimer
-- ObservableCollection
+No requiere instalación. Solo .NET 8 Runtime.
 
 ---
 
-## 📸 **Vista previa de la interfaz**
-*-Proximamente-*
+### 🛠️ Opción 2: Ejecutar desde el código fuente
+
+**Requisitos:**
+- Windows 10/11
+- .NET 8 SDK
+
+**Comandos:**
+```sh
+cd src/ZaldrionNetMonitorGUI
+dotnet build
+dotnet run
+```
+
+---
+
+## 🚀 Cómo usar
+
+1. Abrir la aplicación.  
+2. Escribir el **nombre del proceso** a monitorear (ej: `chrome`, `brave`).  
+3. Seleccionar protocolo:
+   - Todos
+   - TCP
+   - UDP  
+4. Pulsar **Actualizar** para refrescar conexiones.
+5. (Opcional) Exportar datos actuales en **JSON**.
+
+---
+
+## 📡 Información que muestra
+
+| Campo | Descripción |
+|-------|-------------|
+| **Estado** | Established, Listening, etc. |
+| **Proceso** | Nombre del ejecutable |
+| **PID** | ID del proceso |
+| **IP Remota** | Dirección destino |
+| **Puerto** | Puerto remoto |
+| **Protocolo** | TCP/UDP |
+| **Última Vista** | Timestamp |
+
+---
+
+## 🔧 Características principales
+
+- Monitoreo en tiempo real (actualiza cada 3 segundos)
+- Filtro avanzado por proceso
+- Filtro por protocolo (TCP / UDP / All)
+- Exportación a JSON
+- Interfaz oscura y moderna
+- Bajo consumo de recursos
+- No requiere permisos de administrador (pero mejora precisión)
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+/src
+ └── ZaldrionNetMonitorGUI
+      ├── App.xaml
+      ├── MainWindow.xaml
+      ├── MainWindow.xaml.cs
+      ├── ConnectionInfo.cs
+      ├── ZaldrionNetMonitorGUI.csproj
+/assets
+ └── screenshots (opcional)
+/README.md
+/.gitignore
+```
+
+---
+
+## ⚠️ Limitaciones
+
+- No captura ni inspecciona paquetes (no es Wireshark).
+- Solo muestra conexiones activas del sistema operativo.
+- Algunas conexiones requieren ejecutar como administrador para mayor precisión.
+
+---
+
+## 📜 Licencia
+
+Proyecto abierto para uso educativo y personal.
